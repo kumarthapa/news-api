@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from 'react'
+import NewsListing from './components/NewsListing'
+import {NewsProvider} from './context/NewsProvider'
+import PrivateRoute from './components/PrivateRoute'
+import Login from './components/Login'
+import {BrowserRouter as Router, Switch,Route} from "react-router-dom"
+//import Loader from "./components/Loader"
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <>
+   <Router>
+   <NewsProvider>
+   <Switch>
+   <PrivateRoute path="/news" component={NewsListing}/>
+   <Route path="/" component={Login}/>
+   </Switch>
+   </NewsProvider>
+   </Router>
+   </>
   );
 }
-
 export default App;
+  //   <div style={{margin:'0px',padding:'50px 0', boxSizing:'border-box',backgroundColor:'#8080801a'}}>
+  //   <NewsListing/>
+  //  </div>
